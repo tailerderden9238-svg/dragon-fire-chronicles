@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bolvtxfgq011s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rie6r"]
+radius = 32.0
+height = 100.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crlql"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="skeleton" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rie6r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_crlql")
+animation = &"Idle"
