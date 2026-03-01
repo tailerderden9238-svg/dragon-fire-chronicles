@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -500.0
 
 @onready var anim = $AnimatedSprite2D
 
+var health: int = 100  # ТЕПЕРЬ ВРАГИ И LABEL БУДУТ ВИДЕТЬ ЭТО
+
+# ... ваш остальной код (движение, прыжки)
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -37,3 +40,6 @@ func _physics_process(delta: float) -> void:
 		anim.play("Fall")
 	
 	move_and_slide()
+	if health <= 0:
+		queue_free()
+		get_tree().change_scene_to_file("res://menu.tscn")

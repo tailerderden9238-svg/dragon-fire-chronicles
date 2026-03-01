@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bolvtxfgq011s"]
+[gd_scene load_steps=58 format=3 uid="uid://bolvtxfgq011s"]
 
 [ext_resource type="Texture2D" uid="uid://tvk2pd7348u1" path="res://oak_woods_v1.0/monster/attack.png" id="1_r6xse"]
 [ext_resource type="Script" uid="uid://dyvoa5dm0v68e" path="res://skeleton.gd" id="1_sv33q"]
@@ -299,9 +299,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rkdin")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -360,17 +360,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"Run",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sv33q"]
 radius = 338.0
 height = 676.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sv33q"]
+size = Vector2(29, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaaco"]
+size = Vector2(63, 20)
 
 [node name="skeleton" type="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -384,13 +390,30 @@ shape = SubResource("CapsuleShape2D_rie6r")
 position = Vector2(0, -6)
 scale = Vector2(0.43000007, 0.46916673)
 sprite_frames = SubResource("SpriteFrames_crlql")
-animation = &"Idle"
+animation = &"Run"
 autoplay = "Idle"
 
 [node name="Detector" type="Area2D" parent="."]
+visible = false
 position = Vector2(3, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
 shape = SubResource("CapsuleShape2D_sv33q")
 
+[node name="Death" type="Area2D" parent="."]
+position = Vector2(6, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
+position = Vector2(-6.5, -58)
+shape = SubResource("RectangleShape2D_sv33q")
+
+[node name="Death2" type="Area2D" parent="."]
+position = Vector2(6, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death2"]
+position = Vector2(-8.5, -4)
+shape = SubResource("RectangleShape2D_uaaco")
+
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="Death2" to="." method="_on_death_2_body_entered"]

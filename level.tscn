@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://7105ohynf88f"]
+[gd_scene load_steps=9 format=4 uid="uid://7105ohynf88f"]
 
 [ext_resource type="PackedScene" uid="uid://cavw1dot6pnje" path="res://character_body_2d.tscn" id="1_vonw3"]
 [ext_resource type="Script" uid="uid://4wutkv3q62mn" path="res://character_body_2d.gd" id="2_oi3di"]
 [ext_resource type="Texture2D" uid="uid://c22hvmmrm87pt" path="res://oak_woods_v1.0/oak_woods_tileset.png" id="3_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://dvbjjs3cr2fxj" path="res://bg.tscn" id="4_f2txt"]
 [ext_resource type="PackedScene" uid="uid://bolvtxfgq011s" path="res://skeleton.tscn" id="5_f2txt"]
+[ext_resource type="Script" uid="uid://cxhuxwur5dhd0" path="res://label.gd" id="6_1ainy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ainy"]
 texture = ExtResource("3_0b4ue")
@@ -443,4 +444,27 @@ script = ExtResource("2_oi3di")
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="skeleton" parent="Mobs" instance=ExtResource("5_f2txt")]
-position = Vector2(327, 137)
+position = Vector2(435, 152)
+
+[node name="skeleton2" parent="Mobs" instance=ExtResource("5_f2txt")]
+position = Vector2(908, 157)
+
+[node name="skeleton3" parent="Mobs" instance=ExtResource("5_f2txt")]
+position = Vector2(1330, 147)
+
+[node name="skeleton4" parent="Mobs" instance=ExtResource("5_f2txt")]
+position = Vector2(1687, 139)
+
+[node name="skeleton5" parent="Mobs" instance=ExtResource("5_f2txt")]
+position = Vector2(2033, 149)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 36.0
+offset_top = 11.0
+offset_right = 220.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 30
+text = "HP"
+script = ExtResource("6_1ainy")
